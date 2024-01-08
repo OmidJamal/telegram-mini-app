@@ -1,25 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import Card from "./Components/Card/Card";
+import {useState} from "react";
+import Cart from "./Components/Cart/Cart";
+
+const {getData} = require('./db/db');
+
+const foods = getData();
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [cartItems, setCartItems] = useState([])
+
+    return (
+        <>
+            <h1 className="heading">Order Food</h1>
+            <Cart cartItems={cartItems}/>
+            <div className='cards_container'>
+                {foods.map(food => {
+                    return <Card food={food} key={food.id}/>
+                })}
+            </div>
+        </>
+    );
 }
 
 export default App;
