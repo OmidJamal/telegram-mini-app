@@ -16,7 +16,8 @@
 }
 
 .btn.add{
-    background-color: var(--primary-color);
+    /*background-color: var(--primary-color);*/
+    background-color: #e0c521;
 }
 
 .btn.remove{

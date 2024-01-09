@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './Card.css'
 import ButtonComponent from "../Buttons/ButtonComponent";
-function Card({food}) {
+function Card({food,onAdd,onRemove}) {
 
     const [count, setCount] = useState(0);
 
@@ -9,10 +9,12 @@ function Card({food}) {
 
     const handleIncrement = () => {
         setCount(count + 1);
+        onAdd(food)
     }
 
     const handleDecrement = () => {
         setCount(count - 1);
+        onRemove(food)
     }
 
     return (
